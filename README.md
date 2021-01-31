@@ -1,19 +1,9 @@
 # BurgerApp 🍔 
-What the project does
+This is a Burger App.
+It follows the MVC design pattern.
+
+It shows a list of burgers and new burger names can be added to the list.
 
 
-
-Why the project is useful
-
-
-
-How users can get started with the project
-
-
-
-Where users can get help with your project
-
-
-
-
-Who maintains and contributes to the project
+Maintained by:
+Maria 
