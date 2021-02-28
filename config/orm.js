@@ -1,5 +1,5 @@
 //sql connection imported
-var connection = require("../config/connection.js");
+var connection = require("./connection.js");
 
 //this function helps with the sql syntax which allows us to pass 3 values
 //into the sql query. To write query, we add 3 ?s. This function creates an 
@@ -85,8 +85,8 @@ function objToSql(ob) {
   
         cb(result);
       });
-    },
-   
+    }
+  };
 
 // Export orm object for the model 
 module.exports = orm;

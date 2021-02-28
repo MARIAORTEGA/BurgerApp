@@ -3,7 +3,7 @@
  {{!--burgers moved to this list after devour button clicked  --}}
 <ul>
   {{#each burger_name}}
-    {{#unless name}}
+    {{#unless newName}}
       {{> burgers/burger-block devour=true}}
     {{/unless}}
   {{/each}}
@@ -12,7 +12,7 @@
   {{!--burgers with devour button  --}}
 <ul>
   {{#each burger_name}}
-    {{#if name}}
+    {{#if newName}}
       {{> burgers/burger-block devour=false}}
     {{/if}}
   {{/each}}

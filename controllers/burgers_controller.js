@@ -5,38 +5,40 @@ var burger = require("../models/burger.js");
 
 var router = express.Router();
 
-//router for the app
+//making route to get data from server
 router.get("/", function(req, res) {
     burger.all(function(data) {
       var hbsObject = {
-        burgers: data
+        burgers_name: data
       };
       console.log(hbsObject);
       res.render("index", hbsObject);
     });
   });
   
+  //making route to submit new burger name to db
   router.post("/api/burgers", function(req, res) {
     burger.create([
-      "name", "Burger"
+      "burger_name"
     ], [
-      req.body.name, req.body.burger
+      req.body.burger_name
     ], function(result) {
       // Send back the ID of the new quote
       res.json({ id: result.insertId });
     });
   });
   
+  //making routes
   router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
   
     console.log("condition", condition);
   
     burger.update({
-      burger: req.body.burger
+      newName: req.body.name
     }, condition, function(result) {
       if (result.changedRows == 0) {
-        // If no rows were changed, then the ID must not exist, so 404
+        // no rows changed = no ID
         return res.status(404).end();
       } else {
         res.status(200).end();
