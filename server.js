@@ -1,3 +1,4 @@
+require('dotenv').config({ debug: process.env.DEBUG })
 var express = require("express");
 
 var PORT = process.env.PORT || 8080;

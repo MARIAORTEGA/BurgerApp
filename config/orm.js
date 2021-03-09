@@ -68,7 +68,7 @@ function objToSql(ob) {
         cb(result);
       });
     },
-//     // An example of objColVals would be {burger_name:Veggie Burger , boolean: true/false}
+    // An example of objColVals would be {burger_name:Veggie Burger , boolean: true/false}
     update: function(table, objColVals, condition, cb) {
       var queryString = "UPDATE " + table;
   
@@ -85,8 +85,26 @@ function objToSql(ob) {
   
         cb(result);
       });
-    }
-  };
+    },
+  
+
+  delete: function(table, condition, cb) {
+    var queryString = "DELETE FROM " + table;
+    queryString += " WHERE ";
+    queryString += condition;
+
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  }
+};
+
+
+
 
 // Export orm object for the model 
 module.exports = orm;

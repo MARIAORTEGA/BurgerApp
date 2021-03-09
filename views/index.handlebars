@@ -1,46 +1,38 @@
+<h1>Burgers!</h1>
 
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Eat a burger!</h1>
-      <img src="/public/assets/css/burger.jpg" alt="cartoon burger">
-  </div>
-</div>
-   
-<form>
-  <div class="col">
-      <input type="text" class="form-control" placeholder="burger name">
-    </div>
-  <button type="submit" class="btn btn-primary mb-2">submit</button>
-</form>
+<h2>Devoured Burgers!</h2>
 
-
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <ul>
-  {{#each burger_name}}
-    {{#if newName}}
-      {{> burgers/burger-block devour=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-        <a href="#" class="btn btn-primary">devour it!</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <ul>
-  {{#each burger_name}}
-    {{#unless newName}}
+<ul>
+  {{#each burgers}}
+    {{#unless devoured}}
       {{> burgers/burger-block devour=true}}
     {{/unless}}
   {{/each}}
 </ul>
-        <a href="#" class="btn btn-primary">devoured!</a>
-      </div>
-    </div>
+
+<h2>Burgers to Devour!</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+      {{> burgers/burger-block devour=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Burger Name:</label>
+    <input type="text" id="ca" name="name">
   </div>
-</div>
+
+  <div class="form-group">
+    <label for="devoured">Sleepy?</label><br>
+    <input type="radio" name="devoured" value="1" checked> Devoured!<br>
+    <input type="radio" name="devoured" value="0"> Devour
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>
